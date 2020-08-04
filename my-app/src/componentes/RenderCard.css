@@ -1,0 +1,117 @@
+/*Padrão mobile 320px*/
+
+.hero{width: 100%; padding: 3% 5%;  float: left; }
+
+
+/*Div dos Cards*/
+.heroCard{ margin: 15px auto 4px auto;
+     
+     width: 280px;
+     box-shadow: 0px 2px 5px
+     #000000;
+     display: block;
+     border-radius: 7px;
+     background:linear-gradient(to right, #fff, #423f3c);
+}
+
+/*Div da Imagem estilizando a imagem*/
+.imageCard img{
+    width:100%;
+    
+    height: 16em;
+    border-radius: 7px 7px 0 0;
+    
+     }
+
+.heroCard h2{  font-family: Impact, Charcoal, sans-serif;
+          text-align: center;
+          font-size: 1.5em;
+          margin-top: 0.2em ;
+          color: #000000;
+}
+
+.heroContent{
+    
+     text-align: center;
+     
+
+}
+
+.heroContent h3{
+    padding: 0;
+     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+     font-size: 1.2em;
+}
+
+
+
+/*Small Devices 480px*/
+
+@media screen and (min-width: 480px){
+
+
+     .hero{
+     display: flex;
+     flex-wrap: wrap;
+     padding: 3.5%;
+     }
+     .heroCard{ 
+          margin: 15px 2.5% 4px 2.5%;
+          width: 45%;           
+     }
+     
+     .heroContent h3{
+          padding: 0;
+           font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+           font-size: 1.3em;
+      }
+
+
+     .imageCard img{ 
+          height: 17.5em;  
+           }
+
+}
+
+/*Small Devices Tablets min-width: 768px */
+@media screen and (min-width: 768px){
+     .hero{padding: 0 1.5%;
+          }
+          
+     .heroCard{ 
+          margin: 15px 1.5% 4px 1.5%;
+          width: 30%;           
+     }
+
+     
+}
+/*Large Devices Desktop min-width: 1280px*/
+@media screen and (min-width: 1280px){
+     .hero{padding: 0.4%;
+     }
+     .heroCard{ 
+          margin: 15px 1% 4px 1%;
+          width: 23%;           
+     }
+     
+}
+
+/*Large Devices Desktop min-width: 1440px*/
+@media screen and (min-width: 1440px){
+     
+
+     .heroCard{ 
+          margin: 15px 1% 4px 1%;
+          width: 18%;           
+     }
+}
+
+/*Large Devices Desktop min-width: 1680px*/
+@media screen and (min-width: 1680px){
+     
+
+     .heroCard{ 
+          margin: 15px 0.7% 4px 0.7%;
+          width: 15.2%;           
+     }
+}
