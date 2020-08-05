@@ -22,6 +22,7 @@ const api={
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [cardPerPage] = useState (12);
+    const [erro, setErro] = useState(false);
 
     /*O useEffect acessa a api e coloca o resultado da busca no state herois*/
     /* caso não consiga acessar a api gera um alerta avisando ao usuário 
@@ -30,37 +31,51 @@ const api={
     useEffect(() => {
         const fetchPost = async () => {
             setLoading(true);
-        const res = await axios.get(api.baseURL+'/'+ api.id + '/search/'+ "a")
-                setLoading(false);
-                setHeroList(res.data.results);
+        const res = await axios.get(api.baseURL + '/'+ api.id +'/search'+'/a')
+                .then((res)=> {
+                    setLoading(false);
+                    setHeroList(res.data.results);
+                   
+                })
+                .catch((error)=>{
+                    setErro(true);
+                })
+                
         }
         fetchPost();
       }, []);
       
-      /* Variáveis da paginação, tendo o indice final, primeiro indice e um array pelos indices
-      das variáveis
-      */
-      const indexOfLastCard = currentPage * cardPerPage;
-      const indexOfFirsCard = indexOfLastCard - cardPerPage;
-      const currentCard = heroList.slice(indexOfFirsCard, indexOfLastCard);
+      if (erro){
+          return(
+              <div>
+                  <center><h3>Não foi possivel conectar-se com a Api</h3></center>
+              </div>
+          );
+      }else{
+            /* Variáveis da paginação, tendo o indice final, primeiro indice e um array pelos indices
+            das variáveis
+            */
+            const indexOfLastCard = currentPage * cardPerPage;
+            const indexOfFirsCard = indexOfLastCard - cardPerPage;
+            const currentCard = heroList.slice(indexOfFirsCard, indexOfLastCard);
+            /* Função que define a pagina atual */
+            const paginate= (pageNumber) => setCurrentPage(pageNumber);
 
-      const paginate= (pageNumber) => setCurrentPage(pageNumber);
+            /*Aqui chama o componente que renderiza os cards enviando o array e o loading 
+            e renderiza a paginação */
+            return(
+                <div>       
+                    <div className="content">   
+                    <RenderCard heroList={currentCard} loading={loading}/>
 
-      /*Aqui chama o componente que renderiza os cards enviando o array e o loading 
-       e renderiza a paginação */
-     return(
-         <div>       
-             <div className="content">   
-             <RenderCard heroList={currentCard} loading={loading}/>
-
-            </div>
-            <div className="content2">
-                <Pagination cardPerPage={cardPerPage}
-                totalCards={heroList.length}
-                paginate={paginate}/>
+                    </div>
+                    <div className="content2">
+                        <Pagination cardPerPage={cardPerPage}
+                        totalCards={heroList.length}
+                        paginate={paginate}/>
+                        </div>
                 </div>
-        </div>
-     );
-        
+            );
+     }
     }
     export default Api;
