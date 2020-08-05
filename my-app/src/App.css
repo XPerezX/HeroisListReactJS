@@ -1,20 +1,25 @@
 .cabecalho{
-margin:0 auto;
-width: 100%;
-min-height: 70px;
-background-color: #232323;
-box-shadow: 0px 2px 20px
-     #000000;
-     padding: 2px;
+    margin:0 auto;
+    width: 100%;
+    min-height: 60px;
+    background-color: #232323;
+    box-shadow: 0px 2px 20px #000000;
+    padding: 2px;
 }
-
-.cabecalho h3{ 
-    
-    margin-top:0px;
+.cabecalho a{
     color: #56e0ff;
     font-family: Impact, Charcoal, sans-serif;
-    margin: 10px;
-    text-align: center;
-    
+    font-size: 1.5em;
+    text-align: center; 
+    margin-top: 20px;
 }
-
+input{
+    margin: 10px 0 ;
+}
+i{
+    color: #000000;
+    height: 1.5em;
+    min-width: 1.5em;
+    padding: 0.2em;
+    background-color: #56e0ff;
+}
